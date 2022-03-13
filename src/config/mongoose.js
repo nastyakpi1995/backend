@@ -8,13 +8,12 @@ mongoose.connection.on('error', error => {
     process.exit(1);
 });
 
-const connect = () => {
-    mongoose
+const connect = async () => {
+    return mongoose
         .connect(config.mongodbUrl, {
-        useCreateIndex: true,
-        useNewUrlParser: true,
-        useUnifiedTopology: true
-    }).then(() => logger.info('Connected to MongoDB'))
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        })
 };
 
 module.exports = {
